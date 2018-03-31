@@ -1,19 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://UI/CharacterSelect.gd" type="Script" id=1]
 [ext_resource path="res://Entities/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Entities/rectangle-256.png" type="Texture" id=3]
-[ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sourceimages/MaleCharacterMain.png" type="Texture" id=4]
+[ext_resource path="res://sourceimages/FemaleCharacterMain.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 100
 use_mipmaps = false
 use_filter = false
-font_data = ExtResource( 4 )
+font_data = ExtResource( 3 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="CharacterSelect" type="CanvasLayer" index="0"]
+[node name="CharacterSelect" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -23,59 +24,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 script = ExtResource( 1 )
 MAIN_GAME = ExtResource( 2 )
 
-[node name="Male" type="Button" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 1150.0
-margin_top = 340.0
-margin_right = 1418.0
-margin_bottom = 602.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-icon = ExtResource( 3 )
-flat = true
-align = 1
-_sections_unfolded = [ "Rect" ]
-
-[node name="Female" type="Button" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 490.0
-margin_top = 340.0
-margin_right = 758.0
-margin_bottom = 602.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-toggle_mode = false
-enabled_focus_mode = 2
-shortcut = null
-group = null
-icon = ExtResource( 3 )
-flat = true
-align = 1
-_sections_unfolded = [ "Rect", "Size Flags", "Visibility", "custom_colors", "custom_constants", "custom_fonts", "custom_styles" ]
-
-[node name="Label" type="Label" parent="." index="2"]
+[node name="Label" type="Label" parent="." index="0"]
 
 anchor_left = 0.5
 anchor_top = 0.0
@@ -97,6 +46,56 @@ percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_fonts" ]
+
+[node name="Male" type="TextureButton" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1160.0
+margin_top = 370.0
+margin_right = 1200.0
+margin_bottom = 412.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 4 )
+_sections_unfolded = [ "Rect", "Textures" ]
+
+[node name="Female" type="TextureButton" parent="." index="2"]
+
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -340.0
+margin_top = -170.0
+margin_right = -300.0
+margin_bottom = -127.0
+rect_scale = Vector2( 5, 5 )
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 5 )
+_sections_unfolded = [ "Rect", "Textures" ]
 
 [connection signal="pressed" from="Male" to="." method="_on_Male_pressed"]
 
