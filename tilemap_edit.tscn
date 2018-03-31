@@ -1,0 +1,134 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sourceimages/floorwall01.png" type="Texture" id=1]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.0916, 26.0593 )
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 25.7464, 25.9488 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 26.0561, 13.0088 )
+
+[node name="Node" type="Node"]
+
+[node name="Floor" type="Sprite" parent="." index="0"]
+
+position = Vector2( 110.394, 83.45 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 53, 52, 52 )
+_sections_unfolded = [ "Region" ]
+
+[node name="BackWall" type="Sprite" parent="." index="1"]
+
+position = Vector2( 198.614, 81.6224 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 86, 0, 52, 52 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BackWall" index="0"]
+
+position = Vector2( -0.0043335, 0.325165 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BackWall/StaticBody2D" index="0"]
+
+position = Vector2( 3.05176e-05, -0.429268 )
+shape = SubResource( 1 )
+
+[node name="Window" type="Sprite" parent="." index="2"]
+
+position = Vector2( 273.435, 81.6223 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 31, 0, 52, 52 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Window" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Window/StaticBody2D" index="0"]
+
+shape = SubResource( 2 )
+
+[node name="TopCorner" type="Sprite" parent="." index="3"]
+
+position = Vector2( 32.5159, 56.2105 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 26, 52 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Transform", "Visibility" ]
+
+[node name="BottomWall" type="Sprite" parent="." index="4"]
+
+position = Vector2( 108.109, 191.95 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 83, 53, 52, 26 )
+_sections_unfolded = [ "Region" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="BottomWall" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D" index="0"]
+
+shape = SubResource( 4 )
+
+[node name="BrownCorner" type="Sprite" parent="." index="5"]
+
+position = Vector2( 199.208, 187.254 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 83, 82, 26, 26 )
+_sections_unfolded = [ "Region" ]
+
+[node name="SideWall" type="Sprite" parent="." index="6"]
+
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 55, 53, 26, 52 )
+_sections_unfolded = [ "Material", "Offset", "Region", "Visibility" ]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="SideWall" index="0"]
+
+position = Vector2( 0.142395, 0 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SideWall/StaticBody2D" index="0"]
+
+
