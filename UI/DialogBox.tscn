@@ -43,7 +43,7 @@ use_filter = false
 font_data = ExtResource( 1 )
 _sections_unfolded = [ "Font", "Settings" ]
 
-[node name="DialogBox" type="CanvasLayer" index="0"]
+[node name="DialogBox" type="CanvasLayer"]
 
 layer = 1
 offset = Vector2( 0, 0 )
@@ -53,7 +53,7 @@ transform = Transform2D( 1, 0, 0, 1, 0, 0 )
 
 [node name="BoxBackground" type="Polygon2D" parent="." index="0"]
 
-position = Vector2( 48, 0 )
+position = Vector2( -288, -368 )
 polygon = PoolVector2Array( 448, 1056, 448, 896, 1408, 896, 1408, 1056 )
 uv = PoolVector2Array(  )
 color = Color( 0.195312, 0.0511169, 0.0511169, 0.651922 )
@@ -66,6 +66,9 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Timer" type="Timer" parent="BoxBackground" index="0"]
 
