@@ -1,20 +1,20 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/Player.gd" type="Script" id=1]
-[ext_resource path="res://sourceimages/FemaleCharacterMain.png" type="Texture" id=2]
-[ext_resource path="res://sourceimages/MaleCharacterMain.png" type="Texture" id=3]
+[ext_resource path="res://sourceimages/MaleCharacterMain.png" type="Texture" id=2]
+[ext_resource path="res://sourceimages/FemaleCharacterMain.png" type="Texture" id=3]
 
 [sub_resource type="SpriteFrames" id=1]
 
 animations = [ {
 "frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "female",
+"name": "male",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 3 ) ],
 "loop": true,
-"name": "male",
+"name": "female",
 "speed": 5.0
 } ]
 
