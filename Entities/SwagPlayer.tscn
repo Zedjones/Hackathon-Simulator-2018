@@ -9,21 +9,21 @@
 custom_solver_bias = 0.0
 radius = 13.8065
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-radius = 8.7252
+extents = Vector2( 8.50516, 7.24369 )
 
-[node name="SwagPlayer" type="KinematicBody2D" index="0"]
+[node name="SwagPlayer" type="KinematicBody2D"]
 
-position = Vector2( 117.225, 56.9993 )
+position = Vector2( 114.928, 57.07 )
 scale = Vector2( 2, 2 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -50,6 +50,9 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="BackpackSprite" type="Sprite" parent="Backpack" index="0"]
 
@@ -59,9 +62,11 @@ region_enabled = true
 region_rect = Rect2( 26, 0, 15, 13 )
 _sections_unfolded = [ "Region" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Backpack" index="1"]
+[node name="BackpackCollision" type="CollisionShape2D" parent="Backpack" index="1"]
 
 position = Vector2( 0.53772, -21.5092 )
 shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Backpack" to="Backpack" method="_on_Backpack_body_entered"]
 
 

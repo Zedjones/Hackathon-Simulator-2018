@@ -16,9 +16,11 @@ collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
+_sections_unfolded = [ "Collision", "Pickable" ]
 __meta__ = {
 "_edit_group_": true
 }
+SPEED = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
@@ -35,9 +37,23 @@ _sections_unfolded = [ "Offset", "Transform" ]
 [node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 5.0
+wait_time = 3.0
 one_shot = false
-autostart = false
+autostart = true
+
+[node name="Backpack" type="Area2D" parent="." index="3"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="BackpackSprite" type="Sprite" parent="Backpack" index="0"]
+
+[node name="BackpackCollision" type="CollisionShape2D" parent="Backpack" index="1"]
 
 [connection signal="timeout" from="Timer" to="." method="switch_target"]
 
