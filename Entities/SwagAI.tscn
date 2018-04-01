@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Entities/SwagAI.gd" type="Script" id=1]
+[ext_resource path="res://Entities/rectangle-256.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="SwagAI" type="KinematicBody2D"]
+
+position = Vector2( 148.281, 84.3433 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 2.6958, 2.46206 )
+scale = Vector2( 4.76658, 4.07909 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Timer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = false
+autostart = false
+
+[connection signal="timeout" from="Timer" to="." method="switch_target"]
+
+

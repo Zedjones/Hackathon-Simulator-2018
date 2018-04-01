@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/MainFloor/MainRoomFloor.tscn" type="PackedScene" id=1]
+
+[node name="SwagStruggle" type="Node" index="0"]
+
+[node name="MainRoomFloor" parent="." index="0" instance=ExtResource( 1 )]
+
+
