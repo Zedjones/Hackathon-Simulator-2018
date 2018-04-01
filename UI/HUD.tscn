@@ -5,7 +5,7 @@
 [sub_resource type="DynamicFont" id=1]
 
 resource_name = "Munro"
-size = 100
+size = 65
 use_mipmaps = false
 use_filter = false
 font_data = ExtResource( 1 )
