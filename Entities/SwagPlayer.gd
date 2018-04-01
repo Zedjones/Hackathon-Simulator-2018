@@ -7,7 +7,6 @@ func _ready():
 	# Called every time the node is added to the scene.
 	# Initialization here
 	screensize = get_viewport_rect().size
-	$AnimatedSprite.animation = GlobalData.player_gender
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

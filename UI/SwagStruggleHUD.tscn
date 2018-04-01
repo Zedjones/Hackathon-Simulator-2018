@@ -13,10 +13,10 @@ _sections_unfolded = [ "Font", "Settings" ]
 [node name="SwagStruggleHUD" type="CanvasLayer"]
 
 layer = 1
-offset = Vector2( 0, 0 )
+offset = Vector2( 273.911, 53.446 )
 rotation = 0.0
 scale = Vector2( 1, 1 )
-transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+transform = Transform2D( 1, 0, 0, 1, 273.911, 53.446 )
 
 [node name="PlayerOneScore" type="Label" parent="." index="0"]
 
