@@ -1,41 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Fonts/Munro.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://UI/RichTextLabel.gd" type="Script" id=2]
+[ext_resource path="res://UI/DialogBox.gd" type="Script" id=2]
 
 [sub_resource type="DynamicFont" id=1]
-
-size = 100
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=2]
-
-size = 100
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=3]
-
-size = 100
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=4]
-
-size = 100
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="DynamicFont" id=5]
 
 size = 100
 use_mipmaps = false
@@ -66,55 +34,39 @@ texture_scale = Vector2( 1, 1 )
 texture_rotation_degrees = 0.0
 invert_enable = false
 invert_border = 100.0
-__meta__ = {
-"_edit_group_": true
-}
 
-[node name="Timer" type="Timer" parent="BoxBackground" index="0"]
+[node name="DialogTimer" type="Timer" parent="BoxBackground" index="0"]
 
 process_mode = 1
 wait_time = 0.1
 one_shot = false
 autostart = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="BoxBackground" index="1"]
+[node name="DialogBox" type="Label" parent="BoxBackground" index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 480.0
+margin_left = 464.0
 margin_top = 912.0
-margin_right = 1376.0
-margin_bottom = 1024.0
+margin_right = 1392.0
+margin_bottom = 1040.0
 rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = true
-mouse_filter = 0
+rect_clip_content = false
+mouse_filter = 2
 mouse_default_cursor_shape = 0
 size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_fonts/mono_font = SubResource( 1 )
-custom_fonts/bold_italics_font = SubResource( 2 )
-custom_fonts/italics_font = SubResource( 3 )
-custom_fonts/bold_font = SubResource( 4 )
-custom_fonts/normal_font = SubResource( 5 )
-custom_colors/default_color = Color( 0.679688, 0.0265503, 0.623559, 1 )
-custom_colors/selection_color = Color( 1, 1, 1, 1 )
-custom_colors/font_color_selected = Color( 0.964844, 0.961075, 0.961075, 1 )
-bbcode_enabled = false
-bbcode_text = ""
-visible_characters = -1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 percent_visible = 1.0
-meta_underlined = true
-tab_size = 4
-text = "Doggie"
-scroll_active = true
-scroll_following = false
-selection_enabled = false
-override_selected_font_color = false
+lines_skipped = 0
+max_lines_visible = -1
 script = ExtResource( 2 )
-_sections_unfolded = [ "custom_colors" ]
+_sections_unfolded = [ "Mouse", "custom_colors", "custom_fonts" ]
 
-[connection signal="timeout" from="BoxBackground/Timer" to="BoxBackground/RichTextLabel" method="_on_Timer_timeout"]
+[connection signal="timeout" from="BoxBackground/DialogTimer" to="BoxBackground/DialogBox" method="_on_Timer_timeout"]
 
 

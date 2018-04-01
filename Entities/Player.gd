@@ -1,4 +1,4 @@
-extends Area2D
+extends KinematicBody2D
 
 export (int) var SPEED
 var screensize
@@ -26,6 +26,7 @@ func _process(delta):
 		velocity.y += 1
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * SPEED
-	position += velocity * delta
-	position.x = clamp(position.x, 0, screensize.x)
-	position.y = clamp(position.y, 0, screensize.y)
+	#position += velocity * delta
+	#position.x = clamp(position.x, 0, screensize.x)
+	#position.y = clamp(position.y, 0, screensize.y)
+	move_and_slide(velocity)

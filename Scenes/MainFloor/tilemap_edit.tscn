@@ -5,19 +5,19 @@
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 26.0916, 26.0593 )
+extents = Vector2( 26.0916, 5.91531 )
 
 [sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
-extents = Vector2( 25.7464, 25.9488 )
+extents = Vector2( 25.7464, 6.01931 )
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 custom_solver_bias = 0.0
 extents = Vector2( 26.0561, 13.0088 )
 
-[node name="Node" type="Node"]
+[node name="Node2D" type="Node2D"]
 
 [node name="Floor" type="Sprite" parent="." index="0"]
 
@@ -101,7 +101,7 @@ bounce = 0.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BottomWall/StaticBody2D" index="0"]
 
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 
 [node name="BrownCorner" type="Sprite" parent="." index="5"]
 
@@ -128,7 +128,12 @@ constant_linear_velocity = Vector2( 0, 0 )
 constant_angular_velocity = 0.0
 friction = 1.0
 bounce = 0.0
+_sections_unfolded = [ "Collision", "Material", "Pickable", "Transform", "Visibility" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SideWall/StaticBody2D" index="0"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SideWall/StaticBody2D" index="0"]
+
+build_mode = 0
+polygon = PoolVector2Array( -12.73, -25.3403, 13.0267, -25.3403, 13.0267, 25.5291, -12.73, 25.5291 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 
