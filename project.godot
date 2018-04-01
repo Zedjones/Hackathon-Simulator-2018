@@ -23,7 +23,4 @@ GlobalData="*res://GlobalData.gd"
 window/size/width=1280
 window/size/height=720
 window/size/resizable=false
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"
+window/dpi/allow_hidpi=true

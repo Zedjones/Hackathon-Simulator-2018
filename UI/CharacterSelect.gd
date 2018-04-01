@@ -22,8 +22,8 @@ func _ready():
 
 func _on_Male_pressed():
 	GlobalData.update_gender("male")
-	get_tree().change_scene("res://Main.tscn")
+	get_tree().change_scene("res://Scenes/MainFloor/Main.tscn")
 
 func _on_Female_pressed():
 	GlobalData.update_gender("female")
-	get_tree().change_scene("res://Main.tscn")
+	get_tree().change_scene("res://Scenes/MainFloor/Main.tscn")

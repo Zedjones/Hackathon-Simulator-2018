@@ -25,7 +25,7 @@ position = Vector2( 110.394, 83.45 )
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 0, 53, 52, 52 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Offset", "Region" ]
 
 [node name="BackWall" type="Sprite" parent="." index="1"]
 
