@@ -1,48 +1,56 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Entities/SwagAI.gd" type="Script" id=1]
-[ext_resource path="res://Entities/rectangle-256.png" type="Texture" id=2]
+[ext_resource path="res://sourceimages/SwagSprites.png" type="Texture" id=2]
+[ext_resource path="res://Entities/AIBackpack.gd" type="Script" id=3]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
+radius = 1.32136
 
-[node name="SwagAI" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 8.45329, 6.92681 )
+
+[node name="SwagAI" type="KinematicBody2D" index="0"]
 
 position = Vector2( 148.281, 84.3433 )
+scale = Vector2( 2, 2 )
 input_pickable = false
 collision_layer = 1
 collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
-_sections_unfolded = [ "Collision", "Pickable" ]
-__meta__ = {
-"_edit_group_": true
-}
+_sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 SPEED = null
+RANGE = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
 
-position = Vector2( 2.6958, 2.46206 )
-scale = Vector2( 4.76658, 4.07909 )
+position = Vector2( 0.284791, 0.282717 )
+scale = Vector2( 4.23974, 4.58341 )
 shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
 
-[node name="Sprite" type="Sprite" parent="." index="1"]
+[node name="SwagSprite" type="Sprite" parent="." index="1"]
 
-scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
-_sections_unfolded = [ "Offset", "Transform" ]
+region_enabled = true
+region_rect = Rect2( 52, 0, 26, 24 )
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 3.0
+wait_time = 1.5
 one_shot = false
 autostart = true
 
-[node name="Backpack" type="Area2D" parent="." index="3"]
+[node name="BackpackAI" type="Area2D" parent="." index="3"]
 
+position = Vector2( -5.78131, -14.8119 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -50,10 +58,21 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
+script = ExtResource( 3 )
 
-[node name="BackpackSprite" type="Sprite" parent="Backpack" index="0"]
+[node name="BackpackSprite" type="Sprite" parent="BackpackAI" index="0"]
 
-[node name="BackpackCollision" type="CollisionShape2D" parent="Backpack" index="1"]
+position = Vector2( 5.22636, -5.50413 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 30, 25, 15, 13 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="BackpackCollision" type="CollisionShape2D" parent="BackpackAI" index="1"]
+
+position = Vector2( 5.22636, -5.50413 )
+shape = SubResource( 2 )
+_sections_unfolded = [ "Transform" ]
 
 [connection signal="timeout" from="Timer" to="." method="switch_target"]
 

@@ -10,7 +10,7 @@ source_file="res://sourceimages/SwagSprites.png"
 source_md5="e9c02617ae6775d7d8cac42e709a2fdb"
 
 dest_files=[ "res://.import/SwagSprites.png-ffba669b186448bfb2fdb95d1148d8a7.stex" ]
-dest_md5="2c19e7f4871ec334ed68eeea1aadf0bd"
+dest_md5="21e4bcde52998448c6cc95d449b1c272"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

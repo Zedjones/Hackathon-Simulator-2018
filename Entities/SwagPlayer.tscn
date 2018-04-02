@@ -50,6 +50,7 @@ angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
 script = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
@@ -60,7 +61,7 @@ position = Vector2( 0.537651, -22.1285 )
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 26, 0, 15, 13 )
-_sections_unfolded = [ "Region" ]
+_sections_unfolded = [ "Offset", "Region" ]
 
 [node name="BackpackCollision" type="CollisionShape2D" parent="Backpack" index="1"]
 

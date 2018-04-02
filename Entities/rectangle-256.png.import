@@ -10,7 +10,7 @@ source_file="res://Entities/rectangle-256.png"
 source_md5="555c9261c79f314bb048b5ffebfcf84c"
 
 dest_files=[ "res://.import/rectangle-256.png-3a1e16c2ecddb4f27d2b4b48473c47a0.stex" ]
-dest_md5="20988905b8eb5cfc7630aef0b874133f"
+dest_md5="2197b69c4e02b548b6b9d797bba15fa5"
 
 [params]
 
@@ -19,7 +19,7 @@ compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
