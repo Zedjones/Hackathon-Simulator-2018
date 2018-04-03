@@ -51,7 +51,7 @@ func switch_target():
 		current_target = enemies[randi() % enemies.size()]
 		#print(current_target)
 	direction = (current_target.position - $".".position).normalized()
-	print(direction)
+	#print(direction)
 	
 func get_type():
 	return "Swag" + str(id)	

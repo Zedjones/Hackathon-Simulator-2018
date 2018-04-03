@@ -18,6 +18,9 @@ func _ready():
 	diff_y = $"../PlayerSprite".position.y - $BackpackSprite.position.y
 	diff_y_coll = $"../PlayerSprite".position.y - $BackpackSprite.position.y
 	#print(diff_y)
+	print("Swag player") 
+	print(diff_y)
+	print(diff_x)
 
 func _process(delta):
 	var velocity = Vector2()
@@ -31,8 +34,8 @@ func _process(delta):
 		velocity.y += 1
 	var new_x = diff_x + $"../PlayerSprite".position.x
 	var new_y = diff_y + $"../PlayerSprite".position.y
-	var new_x_coll = diff_x_coll + $"../PlayerSprite".position.x
-	var new_y_coll = diff_y_coll + $"../PlayerSprite".position.y
+	var new_x_coll = diff_x_coll
+	var new_y_coll = diff_y_coll
 	if(velocity.x == -1):
 		$BackpackSprite.position.x = new_y 
 		$BackpackSprite.position.y = -1*new_x
@@ -50,7 +53,7 @@ func _process(delta):
 		$BackpackSprite.position.x = new_x
 		$BackpackCollision.position.y = -1*new_y_coll
 		$BackpackCollision.position.x = new_x_coll
-	if(velocity.y == -1):
+	elif(velocity.y == -1):
 		$BackpackSprite.position.y = new_y
 		$BackpackSprite.position.x = new_x 
 		$BackpackCollision.position.y = new_y_coll
