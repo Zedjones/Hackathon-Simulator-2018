@@ -21,17 +21,15 @@ position = Vector2( 417.267, 179.325 )
 [node name="SwagAI3" parent="." index="3" instance=ExtResource( 5 )]
 
 position = Vector2( 917, 574.097 )
-SPEED = 350
 
 [node name="SwagAI1" parent="." index="4" instance=ExtResource( 5 )]
 
 position = Vector2( 917.264, 179.122 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "collision" ]
-SPEED = 300
 
 [node name="SwagAI2" parent="." index="5" instance=ExtResource( 5 )]
 
 position = Vector2( 417, 577.421 )
-SPEED = 250
+_sections_unfolded = [ "Collision", "Pause", "Pickable", "Transform" ]
 
 

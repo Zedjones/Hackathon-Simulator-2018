@@ -25,30 +25,54 @@ collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
 SPEED = 100
-RANGE = null
+RANGE = 100
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="Area2D" type="Area2D" parent="." index="0"]
 
-position = Vector2( 0.284791, 0.282717 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+
+position = Vector2( 0.28479, 0.282719 )
 scale = Vector2( 4.23974, 4.58341 )
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="Timer" type="Timer" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.28479, 0.282719 )
+scale = Vector2( 4.23974, 4.58341 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 1.5
+wait_time = 2.0
 one_shot = false
 autostart = true
 
-[node name="SwagSprite" type="Sprite" parent="." index="2"]
+[node name="TargetCooldown" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = false
+autostart = true
+
+[node name="SwagSprite" type="Sprite" parent="." index="4"]
 
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 52, 0, 26, 24 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="BackpackAI" type="Area2D" parent="." index="3"]
+[node name="BackpackAI" type="Area2D" parent="." index="5"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -71,10 +95,15 @@ _sections_unfolded = [ "Region", "Transform" ]
 [node name="BackpackCollision" type="CollisionShape2D" parent="BackpackAI" index="1"]
 
 position = Vector2( -0.16227, -20.7719 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+
 [connection signal="timeout" from="Timer" to="." method="switch_target"]
+
+[connection signal="timeout" from="TargetCooldown" to="." method="disable_cooldown"]
 
 

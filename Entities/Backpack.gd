@@ -18,9 +18,6 @@ func _ready():
 	diff_y = $"../PlayerSprite".position.y - $BackpackSprite.position.y
 	diff_y_coll = $"../PlayerSprite".position.y - $BackpackSprite.position.y
 	#print(diff_y)
-	print("Swag player") 
-	print(diff_y)
-	print(diff_x)
 
 func _process(delta):
 	var velocity = Vector2()
@@ -60,4 +57,8 @@ func _process(delta):
 		$BackpackCollision.position.x = new_x_coll
 
 func _on_Backpack_body_entered(body):
-	print(body.get_type())
+	#print(body.get_type())
+	pass
+	
+func get_type():
+	return "backpack"

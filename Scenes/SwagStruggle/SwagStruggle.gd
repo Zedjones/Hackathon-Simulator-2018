@@ -15,3 +15,4 @@ func _ready():
 	$"SwagAI1".setup_AI(players, 2)
 	$"SwagAI2".setup_AI(players, 3)
 	$"SwagAI3".setup_AI(players, 4)
+	randomize()
