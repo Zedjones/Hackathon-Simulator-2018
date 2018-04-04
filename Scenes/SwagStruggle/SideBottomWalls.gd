@@ -15,4 +15,4 @@ func _ready():
 #	pass
 
 func get_type():
-	return "Walls"
+	return "SideWall"

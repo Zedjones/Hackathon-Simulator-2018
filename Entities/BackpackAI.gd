@@ -24,13 +24,7 @@ func _ready():
 	
 func _process(delta):
 	var velocity = Vector2()
-	var pos_diff = $"..".position - prev_pos
-	prev_pos = $"..".position 
-	if pos_diff.x > pos_diff.y:
-		pos_diff.x = 0
-	else:
-		pos_diff.y = 0
-	#print(pos_diff)
+	var pos_diff = $"..".get_direction()
 	if(pos_diff.x < 0):
 		velocity.x -= 1
 	elif(pos_diff.x > 0):
@@ -39,7 +33,6 @@ func _process(delta):
 		velocity.y += 1
 	elif(pos_diff.y < 0):
 		velocity.y -= 1
-	#print(velocity)
 	if(velocity.x == -1):
 		$BackpackSprite.position.x = diff_y 
 		$BackpackSprite.position.y = -1*diff_x
@@ -61,9 +54,13 @@ func _process(delta):
 		$BackpackCollision.position.y = diff_y_coll
 		$BackpackCollision.position.x = diff_x_coll
 
-"""
-func _on_Backpack_body_entered(body):
-	print(body.get_type())
-"""
 func get_type():
 	return "backpack"
+
+func _on_BackpackAI_body_entered(body):
+	pass
+	if(body.get_type().find("Wall") != -1):
+		print("Backpack colliding with " + body.get_type())
+
+func _on_BackpackAI_area_entered(area):
+	pass

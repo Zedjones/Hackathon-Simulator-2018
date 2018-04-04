@@ -5,11 +5,10 @@ extends KinematicBody2D
 # var b = "textvar"
 
 export (int) var SPEED
-export (int) var RANGE 
 var current_target
 var enemies
 var frozen 
-var id
+var id = 0
 var direction 
 var cooldown
 
@@ -18,48 +17,14 @@ func _ready():
 	# Initialization here
 	enemies = []
 	id = 2
-	set_physics_process(true)
 	randomize()
 	cooldown = false 
 
 func _process(delta):
-	if current_target == null:
-		if not cooldown:
-			for enemy in enemies:
-				if enemy == $".":
-					continue
-				var distance = position.distance_to(enemy.position)
-				#print("Distance to " + str(enemy.get_type()) + "is " + str(distance))
-				if distance <= RANGE:
-					current_target = enemy 
-					var temp_dir = (current_target.position - $".".position).normalized()
-					if temp_dir.x > temp_dir.y:
-						temp_dir.y = 0
-					else:
-						temp_dir.x = 0
-					#print("Temp dir" + str(temp_dir))
-					direction = temp_dir
-	else:
-		var temp_dir = (current_target.position - $".".position).normalized()
-		if temp_dir.x > temp_dir.y:
-			temp_dir.y = 0
-		else:
-			temp_dir.x = 0
-		direction = temp_dir
 	move_and_collide(direction*SPEED*delta)
 	
 func setup_AI(enemy_list, ident):
 	enemies = enemy_list
-	"""
-	current_target = enemies[randi() % enemies.size()]
-	while(current_target == $"."):
-		current_target = enemies[randi() % enemies.size()]
-	var temp_dir = (current_target.position - $".".position).normalized()
-	if temp_dir.x > temp_dir.y:
-		temp_dir.x = 0
-	else:
-		temp_dir.y = 0
-	"""
 	var d = randi() % 4
 	match d:
 		0:
@@ -83,24 +48,6 @@ func freeze(is_frozen):
 	frozen = is_frozen 
 
 func switch_target():
-	"""
-	#print("switching targets")
-	var prev_target = current_target
-	var own_node = $"."
-	while(current_target == prev_target or current_target == own_node):
-		#print(current_target)
-		current_target = enemies[randi() % enemies.size()]
-		#print(current_target)
-	"""
-	"""
-	var temp_dir = (current_target.position - $".".position).normalized()
-	if temp_dir.x > temp_dir.y:
-		temp_dir.x = 0
-	else:
-		temp_dir.y = 0
-	direction = temp_dir
-	#print(direction)
-	"""
 	var d = randi() % 4
 	match d:
 		0:
@@ -119,16 +66,13 @@ func get_type():
 func _on_Area2D_body_entered(body):
 	if body == $".":
 		return 
-	if body.get_type().find("Walls") != -1:
-		print("Switching from wall")
+	if body.get_type() == "TopWall" or body.get_type() == "SideWall":
 		if direction.x == 0:
 			direction.y = -1*direction.y
 		else:
 			direction.x = -1*direction.x
 		current_target = null
 		$TargetCooldown.start()
-	else:
-		print(body.get_type())
 
 func disable_cooldown():
 	cooldown = false 
@@ -136,12 +80,16 @@ func disable_cooldown():
 func _on_Area2D_area_entered(area):
 	if area == $Area2D:
 		return 
-	cooldown = true
-	print(direction)
 	if direction.x == 0:
 		direction.y = -1*direction.y
 	else:
 		direction.x = -1*direction.x
 	current_target = null
-	print("Switching target") 
+	#print("Switching target") 
 	$TargetCooldown.start()
+	
+func get_id():
+	return id
+	
+func get_direction():
+	return direction

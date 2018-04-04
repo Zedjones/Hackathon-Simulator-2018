@@ -1,13 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Entities/SwagAI.gd" type="Script" id=1]
 [ext_resource path="res://sourceimages/SwagSprites.png" type="Texture" id=2]
 [ext_resource path="res://Entities/BackpackAI.gd" type="Script" id=3]
 
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 2.77309, 2.9415 )
+
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
-radius = 1.32136
+radius = 2.82565
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -24,8 +29,7 @@ collision_mask = 1
 collision/safe_margin = 0.08
 script = ExtResource( 1 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform" ]
-SPEED = 100
-RANGE = 100
+SPEED = 150
 
 [node name="Area2D" type="Area2D" parent="." index="0"]
 
@@ -41,7 +45,7 @@ audio_bus_name = "Master"
 
 position = Vector2( 0.28479, 0.282719 )
 scale = Vector2( 4.23974, 4.58341 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -105,5 +109,9 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="timeout" from="Timer" to="." method="switch_target"]
 
 [connection signal="timeout" from="TargetCooldown" to="." method="disable_cooldown"]
+
+[connection signal="area_entered" from="BackpackAI" to="BackpackAI" method="_on_BackpackAI_area_entered"]
+
+[connection signal="body_entered" from="BackpackAI" to="BackpackAI" method="_on_BackpackAI_body_entered"]
 
 
