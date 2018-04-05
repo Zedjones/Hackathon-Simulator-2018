@@ -25,6 +25,8 @@ func _ready():
 func _process(delta):
 	var velocity = Vector2()
 	var pos_diff = $"..".get_direction()
+	if($"..".is_frozen()):
+		return
 	if(pos_diff.x < 0):
 		velocity.x -= 1
 	elif(pos_diff.x > 0):
@@ -58,9 +60,19 @@ func get_type():
 	return "backpack"
 
 func _on_BackpackAI_body_entered(body):
-	pass
-	if(body.get_type().find("Wall") != -1):
-		print("Backpack colliding with " + body.get_type())
+	if(body.get_type().find("Swag") != -1 and body != $".."):
+		if $"..".is_frozen() or body.is_frozen() or body.get_invincible():
+			return
+		print("Collided with backpack " + str($"..".get_id()))
+		print(body.get_type())
+		body.freeze(true)
+		body.start_freeze_timer()
+		$"..".freeze(true)
+		$"../FreezeTimer".start()
+		if $"..".get_score() == 0:
+			return
+		$"..".change_score(-1)
+		body.change_score(1)
 
 func _on_BackpackAI_area_entered(area):
 	pass

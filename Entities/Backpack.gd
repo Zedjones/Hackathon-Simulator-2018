@@ -57,8 +57,19 @@ func _process(delta):
 		$BackpackCollision.position.x = new_x_coll
 
 func _on_Backpack_body_entered(body):
-	#print(body.get_type())
-	pass
+	if $"..".is_frozen():
+		return
+	if(body.get_type().find("Swag") != -1 and body != $".."):
+		if $"..".is_frozen() or body.is_frozen() or body.get_invincible():
+			return
+		body.freeze(true)
+		body.start_freeze_timer()
+		$"..".freeze(true)
+		$"../FreezeTimer".start()
+		if $"..".get_score() == 0:
+			return
+		$"..".change_score(-1)
+		body.change_score(1)
 	
 func get_type():
 	return "backpack"

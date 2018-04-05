@@ -40,7 +40,21 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 26, 26 )
 _sections_unfolded = [ "Region" ]
 
-[node name="Backpack" type="Area2D" parent="." index="2"]
+[node name="FreezeTimer" type="Timer" parent="." index="2"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="StealCooldown" type="Timer" parent="." index="3"]
+
+process_mode = 1
+wait_time = 4.5
+one_shot = true
+autostart = false
+
+[node name="Backpack" type="Area2D" parent="." index="4"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -67,6 +81,10 @@ _sections_unfolded = [ "Offset", "Region" ]
 
 position = Vector2( 0.53772, -21.5092 )
 shape = SubResource( 2 )
+
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_FreezeTimer_timeout"]
+
+[connection signal="timeout" from="StealCooldown" to="." method="_on_StealCooldown_timeout"]
 
 [connection signal="body_entered" from="Backpack" to="Backpack" method="_on_Backpack_body_entered"]
 

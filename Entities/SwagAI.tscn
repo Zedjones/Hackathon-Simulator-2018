@@ -58,7 +58,7 @@ _sections_unfolded = [ "Transform" ]
 [node name="Timer" type="Timer" parent="." index="2"]
 
 process_mode = 1
-wait_time = 2.0
+wait_time = 0.5
 one_shot = false
 autostart = true
 
@@ -67,16 +67,30 @@ autostart = true
 process_mode = 1
 wait_time = 2.0
 one_shot = false
-autostart = true
+autostart = false
 
-[node name="SwagSprite" type="Sprite" parent="." index="4"]
+[node name="FreezeTimer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 2.0
+one_shot = true
+autostart = false
+
+[node name="StealCooldown" type="Timer" parent="." index="5"]
+
+process_mode = 1
+wait_time = 4.5
+one_shot = true
+autostart = false
+
+[node name="SwagSprite" type="Sprite" parent="." index="6"]
 
 texture = ExtResource( 2 )
 region_enabled = true
 region_rect = Rect2( 52, 0, 26, 24 )
 _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="BackpackAI" type="Area2D" parent="." index="5"]
+[node name="BackpackAI" type="Area2D" parent="." index="7"]
 
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
@@ -109,6 +123,10 @@ _sections_unfolded = [ "Transform" ]
 [connection signal="timeout" from="Timer" to="." method="switch_target"]
 
 [connection signal="timeout" from="TargetCooldown" to="." method="disable_cooldown"]
+
+[connection signal="timeout" from="FreezeTimer" to="." method="_on_FreezeTimer_timeout"]
+
+[connection signal="timeout" from="StealCooldown" to="." method="_on_StealCooldown_timeout"]
 
 [connection signal="area_entered" from="BackpackAI" to="BackpackAI" method="_on_BackpackAI_area_entered"]
 

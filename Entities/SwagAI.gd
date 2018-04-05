@@ -5,12 +5,14 @@ extends KinematicBody2D
 # var b = "textvar"
 
 export (int) var SPEED
+var score
 var current_target
 var enemies
 var frozen 
 var id = 0
 var direction 
 var cooldown
+var invincible 
 
 func _ready():
 	# Called every time the node is added to the scene.
@@ -19,9 +21,11 @@ func _ready():
 	id = 2
 	randomize()
 	cooldown = false 
+	score = 10
 
 func _process(delta):
-	move_and_collide(direction*SPEED*delta)
+	if not frozen:
+		move_and_collide(direction*SPEED*delta)
 	
 func setup_AI(enemy_list, ident):
 	enemies = enemy_list
@@ -46,6 +50,9 @@ func setup_AI(enemy_list, ident):
 	
 func freeze(is_frozen):
 	frozen = is_frozen 
+	
+func is_frozen():
+	return frozen
 
 func switch_target():
 	var d = randi() % 4
@@ -93,3 +100,26 @@ func get_id():
 	
 func get_direction():
 	return direction
+	
+func start_freeze_timer():
+	$FreezeTimer.start()
+
+func _on_FreezeTimer_timeout():
+	frozen = false 
+	invincible = true 
+	$StealCooldown.start()
+
+func change_score(delta):
+	score += delta 
+	
+func get_score():
+	return score
+	
+func set_invincible(set_invincible):
+	invincible = set_invincible
+	
+func get_invincible():
+	return invincible
+
+func _on_StealCooldown_timeout():
+	invincible = false 

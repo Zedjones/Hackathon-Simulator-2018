@@ -42,7 +42,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="PlayerOneScore2" type="Label" parent="." index="1"]
+[node name="PlayerTwoScore" type="Label" parent="." index="1"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -66,7 +66,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="PlayerOneScore3" type="Label" parent="." index="2"]
+[node name="PlayerThreeScore" type="Label" parent="." index="2"]
 
 anchor_left = 0.0
 anchor_top = 0.0
@@ -90,7 +90,7 @@ lines_skipped = 0
 max_lines_visible = -1
 _sections_unfolded = [ "Rect", "custom_colors", "custom_fonts" ]
 
-[node name="PlayerOneScore4" type="Label" parent="." index="3"]
+[node name="PlayerFourScore" type="Label" parent="." index="3"]
 
 anchor_left = 0.0
 anchor_top = 0.0
